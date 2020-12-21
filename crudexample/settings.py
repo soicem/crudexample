@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,7 +25,7 @@ SECRET_KEY = '*x=m8yz(ttz8q%vzo6)tkuvtn&=#x91pz2f)1e_0)#f-$0wd#8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["18.224.179.81", "ec2-18-224-179-81.us-east-2.compute.amazonaws.com",]
+ALLOWED_HOSTS = ["18.188.136.29", "ec2-18-188-136-29.us-east-2.compute.amazonaws.com",]
 
 
 # Application definition
