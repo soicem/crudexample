@@ -1,0 +1,39 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Employee Records</title>  
+     {% load static %}  
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
+</head>  
+<body>  
+<table class="table table-striped table-bordered table-sm">  
+    <thead class="thead-dark">  
+    <tr>  
+        <th>고객</th>  
+        <th>거래</th>  
+        <th>상품</th>  
+        <th>검색</th>  
+        <th>특수 조건 검색</th>  
+    </tr>  
+    </thead>  
+    <tbody>  
+    <tr>  
+        <td>
+            <a href="/show"><span class="glyphicon glyphicon-pencil" >고객 테이블 입력</span></a>
+        </td>  
+        <td>
+            <a href="/show"><span class="glyphicon glyphicon-pencil" >거래 테이블 입력</span></a>
+        </td>  
+        <td>
+            <a href="/show"><span class="glyphicon glyphicon-pencil" >상품 테이블 입력</span></a>
+        </td>  
+        <td>blank</td>  
+        <td>blank</td>  
+    </tr>  
+    </tbody>  
+</table>  
+ 
+</body>  
+</html>
