@@ -14,6 +14,8 @@ def emp(request):
     else:  
         form = EmployeeForm()  
     return render(request,'index.html',{'form':form})  
+def front(request):  
+    return render(request,"front.html",{'employees':employees})  
 def show(request):  
     employees = Employee.objects.all()  
     return render(request,"show.html",{'employees':employees})  
@@ -31,3 +33,4 @@ def destroy(request, id):
     employee = Employee.objects.get(id=id)  
     employee.delete()  
     return redirect("/show")  
+
