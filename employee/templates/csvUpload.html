@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
 </head>  
 <body>  
-    <form method="POST" class="post-form" enctype="multipart/form-data" action="/CSVUpload">  
+    <form method="POST" class="post-form" enctype="multipart/form-data" action="/CSVUpload/">  
         {% csrf_token %}  
         <input type="file" name="fileToUpload" id="fileToUpload"> 
         <button type="submit" class="save btn btn-default">Save</button>  

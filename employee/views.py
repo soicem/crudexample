@@ -151,7 +151,9 @@ def destroyTransaction(request, transactionNumber):
 
 def csvUpload(request):  
     if request.method == "POST":  
-        print(request.FILES) 
+        for filename, file in request.FILES.iteritems():
+            name = request.FILES[filename].name
+            print(name)
         return render(request, 'front.html')
     else:  
         return render(request,'csvUpload.html',)  
