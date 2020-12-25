@@ -1,6 +1,10 @@
 from django.shortcuts import render, redirect  
 from employee.forms import EmployeeForm  
 from employee.models import Employee  
+
+from employee.forms import customerForm  
+from employee.models import Customer  
+
 # Create your views here.  
 def emp(request):  
     if request.method == "POST":  
