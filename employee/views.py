@@ -151,15 +151,58 @@ def destroyTransaction(request, transactionNumber):
 
 def csvUpload(request):  
     if request.method == "POST":  
-        for filename, csvfile in request.FILES.iteritems():
+        for filename, csvfile in request.FILES.items():
             if not csvfile.name.endswith('.csv'):
                 continue
             name = request.FILES[filename].name
             file_data  = csv_file.read().decode("utf-8")
             lines = file_data.split("\n")
             #loop over the lines and save them in db. If error , store as string and then display
-            for line in lines:						
+            for line in lines:
                 fields = line.split(",")
+                dataType = fields[0]
+                
+                if dataType == 'C': # Customer
+                    data = {}
+                    data["name"] = fields[1]
+                    data["phone"] = fields[2]
+                    data["address"] = fields[3]
+                    data["gender"] = fields[4]
+
+                    form = CustomerForm(data)
+                    if form.is_valid():  
+                    try:  
+                        form.save()  
+                    except:  
+                        pass 
+                
+                elif dataType == 'P': # Product
+                    data = {}
+                    data["name"] = fields[1]
+                    data["productID"] = fields[2]
+                    data["productSupplier"] = fields[3]
+
+                    form = ProductForm(data)
+                    if form.is_valid():  
+                    try:  
+                        form.save()   
+                    except:  
+                        pass
+                elif dataType == 'T': # Transaction
+                    data = {}
+                    data["transactionNumber"] = fields[1]
+                    data["productID"] = fields[2]
+                    data["price"] = fields[3]
+                    data["date"] = fields[4]
+                    date["customerName"] = fields[5]
+
+                    form = TransactionForm(data)
+                    if form.is_valid():  
+                    try:  
+                        form.save()    
+                    except:  
+                        pass
+
                 print(fields)
                 
         return render(request, 'front.html')
