@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from employee.forms import EmployeeForm  
 from employee.models import Employee  
 
-from employee.forms import customerForm  
+from employee.forms import CustomerForm  
 from employee.models import Customer  
 
 # Create your views here.  
