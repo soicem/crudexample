@@ -5,6 +5,12 @@ from employee.models import Employee
 from employee.forms import CustomerForm  
 from employee.models import Customer  
 
+from employee.forms import TransactionForm  
+from employee.models import Transaction  
+
+from employee.forms import ProductForm
+from employee.models import Product
+
 # Create your views here.  
 def emp(request):  
     if request.method == "POST":  
