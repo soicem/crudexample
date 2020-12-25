@@ -151,8 +151,8 @@ def destroyTransaction(request, transactionNumber):
 
 def csvUpload(request):  
     if request.method == "POST":  
-        for filename, csvfile in request.FILES.items():
-            if not csvfile.name.endswith('.csv'):
+        for filename, csv_file in request.FILES.items():
+            if not csv_file.name.endswith('.csv'):
                 continue
             name = request.FILES[filename].name
             file_data  = csv_file.read().decode("utf-8")
