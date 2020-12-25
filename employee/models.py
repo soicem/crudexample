@@ -10,7 +10,7 @@ class Employee(models.Model):
 class Customer(models.Model):  
     name = models.CharField(max_length=100, primary_key=True)  
     phone = models.CharField(max_length=30)  
-    address = models.CharField(max_length=15)  
+    address = models.CharField(max_length=30)  
     gender = models.CharField(max_length=15)  
     class Meta:  
         db_table = "customer" 

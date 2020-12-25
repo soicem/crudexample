@@ -180,7 +180,7 @@ def csvUpload(request):
                     data = {}
                     data["name"] = fields[1]
                     data["productID"] = fields[2]
-                    data["productSupplier"] = fields[3]
+                    data["supplierName"] = fields[3]
 
                     form = ProductForm(data)
                     if form.is_valid():  
@@ -194,7 +194,7 @@ def csvUpload(request):
                     data["productID"] = fields[2]
                     data["price"] = fields[3]
                     data["date"] = fields[4]
-                    date["customerName"] = fields[5]
+                    data["customerName"] = fields[5]
 
                     form = TransactionForm(data)
                     if form.is_valid():  
