@@ -12,13 +12,13 @@
         {% csrf_token %}  
     <div class="container">  
 <br>  
-    <div class="form-group row">  
+  <div class="form-group row">  
     <label class="col-sm-1 col-form-label"></label>  
     <div class="col-sm-4">  
     <h3>Update Details</h3>  
     </div>  
   </div>  
-    <div class="form-group row">  
+  <div class="form-group row">  
     <label class="col-sm-2 col-form-label">Transaction Number:</label>  
     <div class="col-sm-4">  
         <input type="text" name="transactionNumber" id="id_transactionNumber" required maxlength="20" value="{{ transaction.transactionNumber }}"/>  
@@ -49,8 +49,8 @@
         <input type="text" name="customerName" id="id_customerName" required maxlength="15" value="{{ transaction.customerName }}" />  
     </div>  
   </div> 
-    <div class="form-group row">  
-    <label class="col-sm-1 col-form-label"></label>  
+  <div class="form-group row">  
+    <label class="col-sm-2 col-form-label"></label>  
     <div class="col-sm-4">  
     <button type="submit" class="btn btn-success">Update</button>  
     </div>  
