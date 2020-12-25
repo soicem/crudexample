@@ -211,12 +211,12 @@ def search(request):
     col = request.POST['col']
     target = request.POST['search']
     if col == "name":
-        customers = Customer.objects..filter(name=target)
+        customers = Customer.objects.filter(name=target)
     elif col == "phone":
-        customers = Customer.objects..filter(phone=target)
+        customers = Customer.objects.filter(phone=target)
     elif col == "address":
-        customers = Customer.objects..filter(phone=target)
+        customers = Customer.objects.filter(phone=target)
     elif col == "gender":
-        customers = Customer.objects..filter(gender=target)
+        customers = Customer.objects.filter(gender=target)
     
     return render(request,"customer/show.html",{'customers':customers})  
