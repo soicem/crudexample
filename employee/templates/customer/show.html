@@ -21,13 +21,13 @@
     <tbody>  
 {% for customer in customers %}  
     <tr>  
-        <td>{{ customer.cname }}</td>  
-        <td>{{ customer.cphone }}</td>  
-        <td>{{ customer.caddress }}</td>  
-        <td>{{ customer.cgender }}</td>  
+        <td>{{ customer.id_name }}</td>  
+        <td>{{ customer.id_phone }}</td>  
+        <td>{{ customer.id_address }}</td>  
+        <td>{{ customer.id_gender }}</td>  
         <td>  
-            <a href="/edit/{{ customer.name }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
-            <a href="/delete/{{ customer.name }}">Delete</a>  
+            <a href="/edit/{{ customer.id_name }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
+            <a href="/delete/{{ customer.id_name }}">Delete</a>  
         </td>  
     </tr>  
 {% endfor %}  
