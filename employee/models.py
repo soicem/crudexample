@@ -24,10 +24,10 @@ class Product(models.Model):
 
 class Transaction(models.Model):  
     transactionNumber = models.CharField(max_length=100, primary_key=True)  
-    productID = models.ForeignKey("Product", on_delete=models.CASCADE) 
+    productID = models.CharField(max_length=100)  
     price = models.CharField(max_length=30)  
     date = models.DateTimeField()
-    custmerName = models.CharField(max_length=100)  
+    customerName = models.CharField(max_length=100)  
     class Meta:  
         db_table = "transaction" 
 
