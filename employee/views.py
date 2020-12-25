@@ -252,15 +252,31 @@ def searchProduct(request):
 
 def specialSearch(request):  
     # As, Cs
+    As = {}
+    Cs = {}
     with connection.cursor() as cursor:
-        cursor.execute("select name from Customer;")
+        q = "select name from product p where p.productID in (select A.productID productID from (select T.productID productID, count(T.productID) cnt from customer C inner join 'transaction' T on C.name == T.customerName and C.gender is 'Male' group by T.productID) A inner join (select T.productID productID, count(T.productID) cnt from customer C inner join 'transaction' T on C.name == T.customerName and C.gender is 'Female' group by T.productID) B on A.productID == B.productID where A.cnt > B.cnt);"
+        cursor.execute(q)
         row = cursor.fetchone()
         print(row)
-    #return render(request,"specialSearch.html",{'As':As, 'Cs':Cs}) 
+
+    with connection.cursor() as cursor:
+        q = ""
+        cursor.execute(q)
+        row = cursor.fetchone()
+        # Cs
+
+    return render(request,"specialSearch.html",{'As':As, 'Cs':Cs}) 
 
 def searchK(request): 
+    date = request.POST['date']
     K = request.POST['K']
-    print(K)
+
+    with connection.cursor() as cursor:
+        q = ""
+        cursor.execute(q)
+        row = cursor.fetchone()
+        # Bs
 
     
     #return render(request,"searchK.html",{'Bs':Bs}) 
