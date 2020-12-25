@@ -149,3 +149,7 @@ def destroyTransaction(request, transactionNumber):
     transaction.delete()  
     return redirect("/show/transaction")  
 
+def csvUpload(request):  
+    print(request.FILES['file'])
+    return redirect("")  
+
