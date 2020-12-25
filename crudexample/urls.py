@@ -19,8 +19,8 @@ from employee import views
 urlpatterns = [  
     path('admin/', admin.site.urls),  
     path('', views.front),
-    path('emp', views.emp),  
-    path('show',views.show),  
+    path('emp/{<int:id>}', views.emp),  
+    path('show/{<int:id>}',views.show),  
     path('edit/<int:id>', views.edit),  
     path('update/<int:id>', views.update),  
     path('delete/<int:id>', views.destroy),  

@@ -26,8 +26,8 @@
         <td>{{ customer.caddress }}</td>  
         <td>{{ customer.cgender }}</td>  
         <td>  
-            <a href="/edit/{{ employee.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
-            <a href="/delete/{{ employee.id }}">Delete</a>  
+            <a href="/edit/{{ customer.name }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
+            <a href="/delete/{{ customer.name }}">Delete</a>  
         </td>  
     </tr>  
 {% endfor %}  
@@ -35,6 +35,6 @@
 </table>  
 <br>  
 <br>  
-<center><a href="/emp" class="btn btn-primary">Add New Record</a></center>  
+<center><a href="/emp/0" class="btn btn-primary">Add New Record</a></center>  
 </body>  
 </html>
