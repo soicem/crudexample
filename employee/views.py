@@ -234,7 +234,7 @@ def searchTransaction(request):
     elif col == "customerName":
         transactions = Transaction.objects.filter(customerName=target)
     
-    return render(request, transaction/show.html",{'transactions':transactions}) 
+    return render(request, "transaction/show.html",{'transactions':transactions}) 
 
 def searchProduct(request):  
     col = request.POST['col']
