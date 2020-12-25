@@ -10,7 +10,7 @@
 <body>  
     <form method="POST" class="post-form" enctype="multipart/form-data" action="/CSVUpload">  
         {% csrf_token %}  
-        {{ form.as_p }}  
+        <input type="file" name="fileToUpload" id="fileToUpload"> 
         <button type="submit" class="save btn btn-default">Save</button>  
     </form>  
 </body>  
