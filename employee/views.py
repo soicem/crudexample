@@ -9,15 +9,15 @@ from employee.models import Customer
 def emp(request, id):  
     if id == 0:
         if request.method == "POST":  
-        form = CustomerForm(request.POST)  
-        if form.is_valid():  
-            try:  
-                form.save()  
-                return redirect('/show/0')  
-            except:  
-                pass  
-        else:  
-            form = CustomerForm()  
+            form = CustomerForm(request.POST)  
+            if form.is_valid():  
+                try:  
+                    form.save()  
+                    return redirect('/show/0')  
+                except:  
+                    pass  
+            else:  
+                form = CustomerForm()  
         return render(request,'customer/index.html',{'form':form})  
     else:
         if request.method == "POST":  
