@@ -11,6 +11,8 @@ from employee.models import Transaction
 from employee.forms import ProductForm
 from employee.models import Product
 
+from django.db import connection
+
 # Create your views here.  
 def emp(request):  
     if request.method == "POST":  
@@ -247,3 +249,18 @@ def searchProduct(request):
         products = Product.objects.filter(supplierName=target)
     
     return render(request,"product/show.html",{'products':products}) 
+
+def specialSearch(request):  
+    # As, Cs
+    with connection.cursor() as cursor:
+        cursor.execute("select name from Customer;")
+        row = cursor.fetchone()
+        print(row)
+    #return render(request,"specialSearch.html",{'As':As, 'Cs':Cs}) 
+
+def searchK(request): 
+    K = request.POST['K']
+    print(K)
+
+    
+    #return render(request,"searchK.html",{'Bs':Bs}) 

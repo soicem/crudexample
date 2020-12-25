@@ -42,5 +42,7 @@ urlpatterns = [
     path('CSVUpload/', views.csvUpload),
     path('searchCustomer/', views.searchCustomer),
     path('searchTransaction/', views.searchTransaction),
-    path('searchProduct/', views.searchProduct)
+    path('searchProduct/', views.searchProduct),
+    path('specialSearch/', views.specialSearch),
+    path('searchK/', views.searchK)
 ]  
