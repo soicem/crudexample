@@ -199,11 +199,14 @@ def csvUpload(request):
                             form.save()    
                         except:  
                             pass
-                print(data)
+                #print(data)
                 
                 
         return render(request, 'front.html')
     else:  
         return render(request,'csvUpload.html',)  
     
-
+def search(request):  
+    print(request.POST)
+    customers = Customer.objects.all() 
+    return render(request,"customer/show.html",{'customers':customers})  
