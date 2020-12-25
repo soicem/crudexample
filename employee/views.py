@@ -206,8 +206,7 @@ def csvUpload(request):
     else:  
         return render(request,'csvUpload.html',)  
     
-def search(request):  
-    #print(request.POST)
+def searchCustomer(request):  
     col = request.POST['col']
     target = request.POST['search']
     if col == "name":
@@ -220,3 +219,31 @@ def search(request):
         customers = Customer.objects.filter(gender=target)
     
     return render(request,"customer/show.html",{'customers':customers})  
+
+def searchTransaction(request):  
+    col = request.POST['col']
+    target = request.POST['search']
+    if col == "transcationNumber":
+        transactions = Transaction.objects.filter(transcationNumber=target)
+    elif col == "productID":
+        transactions = Transaction.objects.filter(productID=target)
+    elif col == "price":
+        transactions = Transaction.objects.filter(price=target)
+    elif col == "date":
+        transactions = Transaction.objects.filter(date=target)
+    elif col == "customerName":
+        transactions = Transaction.objects.filter(customerName=target)
+    
+    return render(request, transaction/show.html",{'transactions':transactions}) 
+
+def searchProduct(request):  
+    col = request.POST['col']
+    target = request.POST['search']
+    if col == "name":
+        products = Product.objects.filter(name=target)
+    elif col == "productID":
+        products = Product.objects.filter(productID=target)
+    elif col == "supplierName":
+        products = Product.objects.filter(supplierName=target)
+    
+    return render(request,"product/show.html",{'products':products}) 

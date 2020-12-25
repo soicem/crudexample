@@ -40,5 +40,7 @@ urlpatterns = [
     path('delete/customer/<int:id>', views.destroyCustomer),  
     path('delete/transaction/<int:id>', views.destroyTransaction),  
     path('CSVUpload/', views.csvUpload),
-    path('search/', views.search)
+    path('searchCustomer/', views.searchCustomer),
+    path('searchTransaction/', views.searchTransaction),
+    path('searchProduct/', views.searchProduct)
 ]  

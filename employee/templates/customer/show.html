@@ -39,11 +39,10 @@
 <br> 
 <br> 
 <center>
-    <form method="POST" class="post-form" action="/search/">  
+    <form method="POST" class="post-form" action="/searchCustomer/">  
         {% csrf_token %}  
         <div class="container">  
         <label for="col">Choose a column:</label>
-        <div class="form-group row">  
         <select name="col" id="col">
             <option value="name">name</option>
             <option value="phone">phone</option>

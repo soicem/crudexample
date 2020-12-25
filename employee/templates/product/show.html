@@ -32,6 +32,27 @@
 </table>  
 <br>  
 <br>  
-<center><a href="/emp/product" class="btn btn-primary">Add New Record</a></center>  
+<center><a href="/emp/product" class="btn btn-primary">Add New Record</a></center> 
+<br> 
+<br> 
+<center>
+    <form method="POST" class="post-form" action="/searchProduct/">  
+        {% csrf_token %}  
+        <div class="container">  
+        <label for="col">Choose a column:</label>
+        <select name="col" id="col">
+            <option value="name">name</option>
+            <option value="productID">productID</option>
+            <option value="supplierName">supplierName</option>
+        </select>
+
+        <input type="text" name="search" id="id_search" required maxlength="100" placeholder="search" /> 
+      </div>  
+      
+        <button type="submit" class="btn btn-primary">Search</button>  
+
+    </div>  
+    </form> 
+</center> 
 </body>  
 </html>
