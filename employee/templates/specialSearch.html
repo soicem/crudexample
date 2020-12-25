@@ -1,0 +1,70 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Employee Records</title>  
+     {% load static %}  
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
+</head>  
+<body>  
+<table class="table table-striped table-bordered table-sm">  
+    <thead class="thead-dark">  
+    <tr>  
+        <th>product name</th>  
+        <th>count</th>  
+    </tr>  
+    </thead>  
+    <tbody>  
+{% for A in As %}  
+    <tr>  
+        <td>{{ A.productName }}</td>  
+        <td>{{ A.count }}</td>  
+    </tr>  
+{% endfor %}  
+    </tbody>  
+</table>  
+
+<br>
+<br>
+
+<form method="POST" class="post-form" action="/searchK/">  
+    {% csrf_token %}  
+    <div class="container"> 
+    <input type="text" name="date" id="id_date" required maxlength="100" placeholder="input date" />  
+    <input type="text" name="K" id="id_K" required maxlength="100" placeholder="input K" /> 
+  </div>  
+  
+
+    <button type="submit" class="btn btn-primary">Search</button>  
+</div>
+</div>  
+</form> 
+
+<br>  
+<br> 
+<table class="table table-striped table-bordered table-sm">  
+    <thead class="thead-dark">  
+    <tr>  
+        <th>Supplier</th>  
+        <th>product name</th>  
+        <th>customer name</th>  
+        <th>buy count</th>  
+    </tr>  
+    </thead>  
+    <tbody>  
+{% for C in Cs %}  
+    <tr>  
+        <td>{{ C.supplierName }}</td>  
+        <td>{{ C.productName }}</td>  
+        <td>{{ C.custoerName }}</td>  
+        <td>{{ C.buyCount }}</td>    
+    </tr>  
+{% endfor %}  
+    </tbody>  
+</table>  
+<br>  
+<br>  
+<center><a href="/emp" class="btn btn-primary">Add New Record</a></center>  
+</body>  
+</html>

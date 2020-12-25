@@ -1,0 +1,30 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Search K</title>  
+     {% load static %}  
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
+</head>  
+<body>  
+<table class="table table-striped table-bordered table-sm">  
+    <thead class="thead-dark">  
+    <tr>  
+        <th>product name</th>  
+        <th>total price(sum)</th>  
+        <th>date</th>  
+    </tr>  
+    </thead>  
+    <tbody>  
+{% for B in Bs %}  
+    <tr>  
+        <td>{{ B.productName }}</td>  
+        <td>{{ B.totalPrice }}</td>  
+        <td>{{ B.date }}</td>
+    </tr>  
+{% endfor %}  
+    </tbody>  
+</table>  
+</body>  
+</html>
