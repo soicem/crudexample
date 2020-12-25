@@ -207,6 +207,16 @@ def csvUpload(request):
         return render(request,'csvUpload.html',)  
     
 def search(request):  
-    print(request.POST)
-    customers = Customer.objects.all() 
+    #print(request.POST)
+    col = request.POST['col']
+    target = request.POST['search']
+    if col == "name":
+        customers = Customer.objects..filter(name=target)
+    elif col == "phone":
+        customers = Customer.objects..filter(phone=target)
+    elif col == "address":
+        customers = Customer.objects..filter(phone=target)
+    elif col == "gender":
+        customers = Customer.objects..filter(gender=target)
+    
     return render(request,"customer/show.html",{'customers':customers})  
