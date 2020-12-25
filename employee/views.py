@@ -251,20 +251,18 @@ def searchProduct(request):
     return render(request,"product/show.html",{'products':products}) 
 
 def specialSearch(request):  
-    # As, Cs
-    As = {}
-    Cs = {}
+    As = 0, Cs = 0
     with connection.cursor() as cursor:
         q = "select name from product p where p.productID in (select A.productID productID from (select T.productID productID, count(T.productID) cnt from customer C inner join 'transaction' T on C.name == T.customerName and C.gender is 'Male' group by T.productID) A inner join (select T.productID productID, count(T.productID) cnt from customer C inner join 'transaction' T on C.name == T.customerName and C.gender is 'Female' group by T.productID) B on A.productID == B.productID where A.cnt > B.cnt);"
         cursor.execute(q)
-        row = cursor.fetchone()
-        print(row)
+        row = cursor.fetchall()
+        As = row
 
     with connection.cursor() as cursor:
         q = ""
         cursor.execute(q)
         row = cursor.fetchone()
-        # Cs
+        Cs = row
 
     return render(request,"specialSearch.html",{'As':As, 'Cs':Cs}) 
 
