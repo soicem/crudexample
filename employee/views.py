@@ -151,9 +151,17 @@ def destroyTransaction(request, transactionNumber):
 
 def csvUpload(request):  
     if request.method == "POST":  
-        for filename, file in request.FILES.iteritems():
+        for filename, csvfile in request.FILES.iteritems():
+            if not csvfile.name.endswith('.csv'):
+                continue
             name = request.FILES[filename].name
-            print(name)
+            file_data  = csv_file.read().decode("utf-8")
+            lines = file_data.split("\n")
+            #loop over the lines and save them in db. If error , store as string and then display
+            for line in lines:						
+                fields = line.split(",")
+                print(fields)
+                
         return render(request, 'front.html')
     else:  
         return render(request,'csvUpload.html',)  
