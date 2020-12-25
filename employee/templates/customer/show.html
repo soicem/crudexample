@@ -2,7 +2,7 @@
 <html lang="en">  
 <head>  
     <meta charset="UTF-8">  
-    <title>Employee Records</title>  
+    <title>Customer Records</title>  
      {% load static %}  
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
@@ -21,13 +21,13 @@
     <tbody>  
 {% for customer in customers %}  
     <tr>  
-        <td>{{ customer.id_name }}</td>  
-        <td>{{ customer.id_phone }}</td>  
-        <td>{{ customer.id_address }}</td>  
-        <td>{{ customer.id_gender }}</td>  
+        <td>{{ customer.name }}</td>  
+        <td>{{ customer.phone }}</td>  
+        <td>{{ customer.address }}</td>  
+        <td>{{ customer.gender }}</td>  
         <td>  
-            <a href="/edit/{{ customer.id_name }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
-            <a href="/delete/{{ customer.id_name }}">Delete</a>  
+            <a href="/edit/{{ customer.name }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
+            <a href="/delete/{{ customer.name }}">Delete</a>  
         </td>  
     </tr>  
 {% endfor %}  

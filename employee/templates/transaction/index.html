@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
 </head>  
 <body>  
-<form method="POST" class="post-form" action="/emp">  
+<form method="POST" class="post-form" action="/emp/transaction">  
         {% csrf_token %}  
     <div class="container">  
 <br>  
@@ -19,27 +19,34 @@
     </div>  
   </div>  
     <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Employee Id:</label>  
+    <label class="col-sm-2 col-form-label">Transaction number:</label>  
     <div class="col-sm-4">  
-      {{ form.eid }}  
+      {{ form.transactionNumber }}  
     </div>  
   </div>  
   <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Employee Name:</label>  
+    <label class="col-sm-2 col-form-label">Transaction productID:</label>  
     <div class="col-sm-4">  
-      {{ form.ename }}  
+      {{ form.productID }}  
     </div>  
   </div>  
     <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Employee Email:</label>  
+    <label class="col-sm-2 col-form-label">Transaction price:</label>  
     <div class="col-sm-4">  
-      {{ form.eemail }}  
+      {{ form.price }}  
     </div>  
   </div>  
     <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Employee Contact:</label>  
+    <label class="col-sm-2 col-form-label">Transaction date:</label>  
     <div class="col-sm-4">  
-      {{ form.econtact }}  
+      {{ form.date }}  
+    </div>  
+  </div> 
+  </div>  
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Transaction customerName:</label>  
+    <div class="col-sm-4">  
+      {{ form.customerName }}  
     </div>  
   </div>  
     <div class="form-group row">  

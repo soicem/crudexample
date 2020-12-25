@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
 </head>  
 <body>  
-<form method="POST" class="post-form" action="/emp">  
+<form method="POST" class="post-form" action="/emp/product">  
         {% csrf_token %}  
     <div class="container">  
 <br>  
@@ -19,29 +19,22 @@
     </div>  
   </div>  
     <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Employee Id:</label>  
+    <label class="col-sm-2 col-form-label">Product name:</label>  
     <div class="col-sm-4">  
-      {{ form.eid }}  
+      {{ form.name }}  
     </div>  
   </div>  
   <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Employee Name:</label>  
+    <label class="col-sm-2 col-form-label">Product ID:</label>  
     <div class="col-sm-4">  
-      {{ form.ename }}  
+      {{ form.productID }}  
     </div>  
   </div>  
     <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Employee Email:</label>  
+    <label class="col-sm-2 col-form-label">Product supplierName:</label>  
     <div class="col-sm-4">  
-      {{ form.eemail }}  
+      {{ form.supplierName }}  
     </div>  
-  </div>  
-    <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Employee Contact:</label>  
-    <div class="col-sm-4">  
-      {{ form.econtact }}  
-    </div>  
-  </div>  
     <div class="form-group row">  
     <label class="col-sm-1 col-form-label"></label>  
     <div class="col-sm-4">  

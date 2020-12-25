@@ -2,7 +2,7 @@
 <html lang="en">  
 <head>  
     <meta charset="UTF-8">  
-    <title>Employee Records</title>  
+    <title>Product Records</title>  
      {% load static %}  
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
@@ -11,23 +11,20 @@
 <table class="table table-striped table-bordered table-sm">  
     <thead class="thead-dark">  
     <tr>  
-        <th>Employee ID</th>  
-        <th>Employee Name</th>  
-        <th>Employee Email</th>  
-        <th>Employee Contact</th>  
-        <th>Actions</th>  
+        <th>Product name</th>  
+        <th>Product id</th>  
+        <th>Product supplier Name</th>  
     </tr>  
     </thead>  
     <tbody>  
-{% for employee in employees %}  
+{% for product in products %}  
     <tr>  
-        <td>{{ employee.eid }}</td>  
-        <td>{{ employee.ename }}</td>  
-        <td>{{ employee.eemail }}</td>  
-        <td>{{ employee.econtact }}</td>  
+        <td>{{ product.name }}</td>  
+        <td>{{ product.productID }}</td>  
+        <td>{{ product.supplierName }}</td>  
         <td>  
-            <a href="/edit/{{ employee.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
-            <a href="/delete/{{ employee.id }}">Delete</a>  
+            <a href="/edit/{{ product.name }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
+            <a href="/delete/{{ product.name }}">Delete</a>  
         </td>  
     </tr>  
 {% endfor %}  
@@ -35,6 +32,6 @@
 </table>  
 <br>  
 <br>  
-<center><a href="/emp" class="btn btn-primary">Add New Record</a></center>  
+<center><a href="/emp/product" class="btn btn-primary">Add New Record</a></center>  
 </body>  
 </html>
