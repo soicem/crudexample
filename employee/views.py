@@ -171,10 +171,10 @@ def csvUpload(request):
 
                     form = CustomerForm(data)
                     if form.is_valid():  
-                    try:  
-                        form.save()  
-                    except:  
-                        pass 
+                        try:  
+                            form.save()  
+                        except:  
+                            pass 
                 
                 elif dataType == 'P': # Product
                     data = {}
@@ -184,10 +184,10 @@ def csvUpload(request):
 
                     form = ProductForm(data)
                     if form.is_valid():  
-                    try:  
-                        form.save()   
-                    except:  
-                        pass
+                        try:  
+                            form.save()   
+                        except:  
+                            pass
                 elif dataType == 'T': # Transaction
                     data = {}
                     data["transactionNumber"] = fields[1]
@@ -198,10 +198,10 @@ def csvUpload(request):
 
                     form = TransactionForm(data)
                     if form.is_valid():  
-                    try:  
-                        form.save()    
-                    except:  
-                        pass
+                        try:  
+                            form.save()    
+                        except:  
+                            pass
 
                 print(fields)
                 
