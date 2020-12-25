@@ -164,10 +164,10 @@ def csvUpload(request):
                 
                 if dataType == 'C': # Customer
                     data = {}
-                    data["name"] = fields[1]
-                    data["phone"] = fields[2]
-                    data["address"] = fields[3]
-                    data["gender"] = fields[4]
+                    data["name"] = fields[1].lstrip()
+                    data["phone"] = fields[2].lstrip()
+                    data["address"] = fields[3].lstrip()
+                    data["gender"] = fields[4].lstrip().replace('\r', '')
 
                     form = CustomerForm(data)
                     if form.is_valid():  
@@ -178,9 +178,9 @@ def csvUpload(request):
                 
                 elif dataType == 'P': # Product
                     data = {}
-                    data["name"] = fields[1]
-                    data["productID"] = fields[2]
-                    data["supplierName"] = fields[3]
+                    data["name"] = fields[1].lstrip()
+                    data["productID"] = fields[2].lstrip()
+                    data["supplierName"] = fields[3].lstrip().replace('\r', '')
 
                     form = ProductForm(data)
                     if form.is_valid():  
@@ -190,11 +190,11 @@ def csvUpload(request):
                             pass
                 elif dataType == 'T': # Transaction
                     data = {}
-                    data["transactionNumber"] = fields[1]
-                    data["productID"] = fields[2]
-                    data["price"] = fields[3]
-                    data["date"] = fields[4]
-                    data["customerName"] = fields[5]
+                    data["transactionNumber"] = fields[1].lstrip()
+                    data["productID"] = fields[2].lstrip()
+                    data["price"] = fields[3].lstrip()
+                    data["date"] = fields[4].lstrip()
+                    data["customerName"] = fields[5].lstrip().replace('\r', '')
 
                     form = TransactionForm(data)
                     if form.is_valid():  
