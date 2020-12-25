@@ -251,7 +251,8 @@ def searchProduct(request):
     return render(request,"product/show.html",{'products':products}) 
 
 def specialSearch(request):  
-    As = 0, Cs = 0
+    As = None
+    Cs = None
     with connection.cursor() as cursor:
         q = "select name from product p where p.productID in (select A.productID productID from (select T.productID productID, count(T.productID) cnt from customer C inner join 'transaction' T on C.name == T.customerName and C.gender is 'Male' group by T.productID) A inner join (select T.productID productID, count(T.productID) cnt from customer C inner join 'transaction' T on C.name == T.customerName and C.gender is 'Female' group by T.productID) B on A.productID == B.productID where A.cnt > B.cnt);"
         cursor.execute(q)
