@@ -27,8 +27,8 @@
         <td>{{ transaction.date }}</td>  
         <td>{{ transaction.customerName }}</td>  
         <td>  
-            <a href="/edit/{{ transaction.transactionNumber }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
-            <a href="/delete/{{ transaction.transactionNumber }}">Delete</a>  
+            <a href="/edit/transaction/{{ transaction.transactionNumber }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a>  
+            <a href="/delete/transaction/{{ transaction.transactionNumber }}">Delete</a>  
         </td>  
     </tr>  
 {% endfor %}  

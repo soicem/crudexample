@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
 </head>  
 <body>  
-<form method="POST" class="post-form" action="/update/{{employee.id}}">  
+<form method="POST" class="post-form" action="/update/transaction/{{transaction.id}}">  
         {% csrf_token %}  
     <div class="container">  
 <br>  
@@ -19,29 +19,36 @@
     </div>  
   </div>  
     <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Customer Name:</label>  
+    <label class="col-sm-2 col-form-label">Transaction Number:</label>  
     <div class="col-sm-4">  
-        <input type="text" name="cname" id="id_name" required maxlength="20" value="{{ customer.id_name }}"/>  
+        <input type="text" name="transactionNumber" id="id_transactionNumber" required maxlength="20" value="{{ transaction.transactionNumber }}"/>  
     </div>  
   </div>  
   <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Customer Phone:</label>  
+    <label class="col-sm-2 col-form-label">Transaction productID:</label>  
     <div class="col-sm-4">  
-        <input type="text" name="cphone" id="id_phone" required maxlength="100" value="{{ customer.id_phone }}" />  
+        <input type="text" name="productID" id="id_productID" required maxlength="100" value="{{ transaction.productID }}" />  
     </div>  
   </div>  
     <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Costomer address:</label>  
+    <label class="col-sm-2 col-form-label">Transaction price:</label>  
     <div class="col-sm-4">  
-        <input type="text" name="caddress" id="id_address" required maxlength="254" value="{{ customer.id_address }}" />  
+        <input type="text" name="price" id="id_price" required maxlength="254" value="{{ transaction.price }}" />  
     </div>  
   </div>  
     <div class="form-group row">  
-    <label class="col-sm-2 col-form-label">Customer gender:</label>  
+    <label class="col-sm-2 col-form-label">Transaction date:</label>  
     <div class="col-sm-4">  
-        <input type="text" name="cgender" id="id_gender" required maxlength="15" value="{{ customer.id_gender }}" />  
+        <input type="text" name="date" id="id_date" required maxlength="15" value="{{ transaction.date }}" />  
     </div>  
   </div>  
+  </div>  
+    <div class="form-group row">  
+    <label class="col-sm-2 col-form-label">Transaction customerName:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="customerName" id="id_customerName" required maxlength="15" value="{{ transaction.customerName }}" />  
+    </div>  
+  </div> 
     <div class="form-group row">  
     <label class="col-sm-1 col-form-label"></label>  
     <div class="col-sm-4">  
