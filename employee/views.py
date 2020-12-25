@@ -161,9 +161,8 @@ def csvUpload(request):
             for line in lines:
                 fields = line.split(",")
                 dataType = fields[0]
-                
+                data = {}
                 if dataType == 'C': # Customer
-                    data = {}
                     data["name"] = fields[1].lstrip()
                     data["phone"] = fields[2].lstrip()
                     data["address"] = fields[3].lstrip()
@@ -177,7 +176,6 @@ def csvUpload(request):
                             pass 
                 
                 elif dataType == 'P': # Product
-                    data = {}
                     data["name"] = fields[1].lstrip()
                     data["productID"] = fields[2].lstrip()
                     data["supplierName"] = fields[3].lstrip().replace('\r', '')
@@ -189,7 +187,6 @@ def csvUpload(request):
                         except:  
                             pass
                 elif dataType == 'T': # Transaction
-                    data = {}
                     data["transactionNumber"] = fields[1].lstrip()
                     data["productID"] = fields[2].lstrip()
                     data["price"] = fields[3].lstrip()
@@ -202,8 +199,8 @@ def csvUpload(request):
                             form.save()    
                         except:  
                             pass
-
-                print(fields)
+                print(data)
+                
                 
         return render(request, 'front.html')
     else:  
