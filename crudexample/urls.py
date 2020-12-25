@@ -18,7 +18,7 @@ from django.urls import path
 from employee import views  
 urlpatterns = [  
     path('admin/', admin.site.urls),  
-    path('/', views.front),
+    path('', views.front),
     path('emp', views.emp),  
     path('show',views.show),  
     path('edit/<int:id>', views.edit),  

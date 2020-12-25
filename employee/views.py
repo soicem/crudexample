@@ -15,7 +15,7 @@ def emp(request):
         form = EmployeeForm()  
     return render(request,'index.html',{'form':form})  
 def front(request):  
-    return render(request,"front.html",{'employees':employees})  
+    return render(request,"front.html")  
 def show(request):  
     employees = Employee.objects.all()  
     return render(request,"show.html",{'employees':employees})  
