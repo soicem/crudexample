@@ -191,7 +191,8 @@ def csvUpload(request):
                 elif dataType == 'T': # Transaction
                     data["transactionNumber"] = fields[1].lstrip()
                     data["productID"] = fields[2].lstrip()
-                    data["price"] = fields[3].lstrip()
+                    price = fields[3].lstrip()
+                    data["price"] = float(price[1:]) # float
                     data["date"] = fields[4].lstrip()
                     data["customerName"] = fields[5].lstrip().replace('\r', '')
 
@@ -286,7 +287,10 @@ def searchK(request):
     K = request.POST['K']
     print(date, K)
     with connection.cursor() as cursor:
-        q = "select productID, totalPrice from (select productID, sum(price) totalPrice from (select * from product P inner join 'transaction' T on P.productID = T.productID where T.date < " + date + ") PT group by PT.productID) R order by R.totalPrice DESC LIMIT " + K + ";"
+        # select * from product P inner join 'transaction' T on P.productID = T.productID where T.date < '2020-12-25 19:11:40.479561';
+        # select PT.productID, sum(PT.price) totalPrice from (select * from product P inner join 'transaction' T on P.productID = T.productID where T.date < '2020-12-25 19:11:40.479561') PT group by PT.productID;
+        # select PT.productID, sum(PT.price) totalPrice from (select * from product P inner join 'transaction' T on P.productID = T.productID where T.date < '2020-12-25 19:11:40.479561') PT group by PT.productID order by sum(PT.price) DESC LIMIT 5
+        q = "select PT.productID, sum(PT.price) totalPrice from (select * from product P inner join 'transaction' T on P.productID = T.productID where T.date < " + date + ") PT order by sum(PT.price) DESC LIMIT " + K + ";"
         print(q)
         cursor.execute(q)
         row = cursor.fetchone()

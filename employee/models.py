@@ -25,7 +25,7 @@ class Product(models.Model):
 class Transaction(models.Model):  
     transactionNumber = models.CharField(max_length=100, primary_key=True)  
     productID = models.CharField(max_length=100)  
-    price = models.CharField(max_length=30)  
+    price = models.FloatField()  
     date = models.DateTimeField()
     customerName = models.CharField(max_length=100)  
     class Meta:  
