@@ -14,6 +14,9 @@ from employee.models import Product
 from django.db import connection
 
 # Create your views here.  
+def goHome(request):  
+    return redirect('/')  
+
 def emp(request):  
     if request.method == "POST":  
         form = EmployeeForm(request.POST)  
@@ -142,8 +145,8 @@ def deleteAll(request):
     
     products = Product.objects.all()
     for product in products:
-        transaction.delete()
-    return redirect("")  
+        product.delete()
+    return redirect("/")  
 
 def destroy(request, id):  
     employee = Employee.objects.get(id=id)  
@@ -231,7 +234,7 @@ def searchCustomer(request):
     elif col == "phone":
         customers = Customer.objects.filter(phone=target)
     elif col == "address":
-        customers = Customer.objects.filter(phone=target)
+        customers = Customer.objects.filter(address=target)
     elif col == "gender":
         customers = Customer.objects.filter(gender=target)
     

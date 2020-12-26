@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
 </head>  
 <body>  
+<a href="/goHome" class="btn btn-primary">go Home</a>
+<br>
+<br>
+
 <table class="table table-striped table-bordered table-sm">  
     <thead class="thead-dark">  
     <tr>  
@@ -35,6 +39,7 @@
 <center><a href="/emp/transaction" class="btn btn-primary">Add New Record</a></center>  
 <br> 
 <br> 
+<label>date 검색 시 format: 2019-1-6 또는 2019-01-06입니다.  (Jan. 6, 2019, midnight <- 이 포맷으로 검색 안됩니다.)</label>
 <center>
     <form method="POST" class="post-form" action="/searchTransaction/">  
         {% csrf_token %}  

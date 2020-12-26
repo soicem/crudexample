@@ -46,5 +46,6 @@ urlpatterns = [
     path('specialSearch/', views.specialSearch),
     path('searchK/', views.searchK),
     path('searchM/', views.searchM),
-    path('deleteAll/', views.deleteAll)
+    path('deleteAll/', views.deleteAll),
+    path('goHome/', views.goHome)
 ]  

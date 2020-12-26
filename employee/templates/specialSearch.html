@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}"/>  
 </head>  
 <body>  
+<a href="/goHome" class="btn btn-primary">go Home</a>
+<br>
+<br>
+<label>A.	남자보다 여자가 많이 산 상품의 이름</label>
 <table class="table table-striped table-bordered table-sm">  
     <thead class="thead-dark">  
     <tr>  
@@ -18,8 +22,7 @@
     <tbody>  
 {% for A in As %}  
     <tr>  
-        <td>{{ A.productName }}</td>
-        <td>{{ A.cnt }}</td>     
+        <td>{{ A.productName }}</td>   
     </tr>  
 {% endfor %}  
     </tbody>  
@@ -29,7 +32,7 @@
 <br>
 <br>  
 <br> 
-
+<label>B.	주어진 날 이전에 가장 많은 거래(금액기준)가 이루어진 k 가지 상품[date: 2020-12-25 19:11:40.479561 또는 2020-12-25 로 입력]</label>
 <form method="POST" class="post-form" action="/searchK/">  
     {% csrf_token %}  
     <input type="text" name="date" id="id_date" required maxlength="100" placeholder="input date" />  
@@ -41,7 +44,7 @@
 <br> 
 <br>  
 <br> 
-
+<label>C.	하나의 supplier에서 m 번 이상의 제품을 산 고객의 이름</label>
 <form method="POST" class="post-form" action="/searchM/">  
     {% csrf_token %}  
     <input type="text" name="M" id="id_M" required maxlength="100" placeholder="input M" />   
