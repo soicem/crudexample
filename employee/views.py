@@ -251,13 +251,21 @@ def searchProduct(request):
     return render(request,"product/show.html",{'products':products}) 
 
 def specialSearch(request):  
-    As = None
-    Cs = None
+    As = []
+    Cs = []
+
+    class Result:
+        productName = ""
+        def __init__(self, productName):
+            self.productName = productName
+
     with connection.cursor() as cursor:
         q = "select name from product p where p.productID in (select A.productID productID from (select T.productID productID, count(T.productID) cnt from customer C inner join 'transaction' T on C.name == T.customerName and C.gender is 'Male' group by T.productID) A inner join (select T.productID productID, count(T.productID) cnt from customer C inner join 'transaction' T on C.name == T.customerName and C.gender is 'Female' group by T.productID) B on A.productID == B.productID where A.cnt > B.cnt);"
         cursor.execute(q)
         row = cursor.fetchall()
-        As = row
+        T = row
+        for A in T:
+            As.append(Result(A[0]))
 
     with connection.cursor() as cursor:
         q = ""
