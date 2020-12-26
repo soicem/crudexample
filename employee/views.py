@@ -313,7 +313,7 @@ def searchM(request):
     D = {}
     with connection.cursor() as cursor:
         # select P.name, T.customerName cn, P.supplierName sn from product P inner join 'transaction' T on P.productID = T.productID ;
-        q = "select P.name, T.customerName cn, P.supplierName sn from product P inner join 'transaction' T on P.productID = T.productID ;"
+        q = "select T.customerName, P.supplierName cn, P.supplierName sn from product P inner join 'transaction' T on P.productID = T.productID ;"
         cursor.execute(q)
         rows = cursor.fetchall()
         for C in rows:
