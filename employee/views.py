@@ -142,7 +142,6 @@ def deleteAll(request):
     
     products = Product.objects.all()
     for product in products:
-    for product in products:
         transaction.delete()
     return redirect("")  
 
