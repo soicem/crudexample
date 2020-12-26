@@ -131,6 +131,21 @@ def updateTransaction(request, transactionNumber):
         return redirect("/show/transaction")  
     return render(request, '/transaction/edit.html', {'transaction': transaction})  
 
+def deleteAll(request):  
+    transactions = Transaction.objects.all()
+    for transaction in transactions:
+        transaction.delete()
+    
+    customers = Customer.objects.all()
+    for customer in customers:
+        customer.delete()
+    
+    products = Product.objects.all()
+    for product in products:
+    for product in products:
+        transaction.delete()
+    return redirect("")  
+
 def destroy(request, id):  
     employee = Employee.objects.get(id=id)  
     employee.delete()  
