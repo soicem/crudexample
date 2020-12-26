@@ -292,7 +292,6 @@ def searchK(request):
         # select * from product P inner join 'transaction' T on P.productID = T.productID where T.date < '2020-12-25 19:11:40.479561';
         # select PPT.productID, PPT.totalPrice from (select PT.productID productID, sum(PT.price) totalPrice from (select P.productID productID, T.price price from product P inner join 'transaction' T on P.productID = T.productID where T.date < '2020-12-25 19:11:40.479561') PT group by PT.productID) PPT order by PPT.totalPrice DESC LIMIT 5;
         # select PT.productID, sum(PT.price) totalPrice from (select * from product P inner join 'transaction' T on P.productID = T.productID where T.date < '2020-12-25 19:11:40.479561') PT group by PT.productID order by sum(PT.price) DESC LIMIT 5
-        #q = "select PT.productID, sum(PT.price) totalPrice from (select * from product P inner join 'transaction' T on P.productID = T.productID where T.date < '" + date + "') PT order by sum(PT.price) DESC LIMIT " + K + ";"
         q = "select PPT.name, PPT.productID, PPT.totalPrice from (select PT.name, PT.productID productID, sum(PT.price) totalPrice from (select P.name name, P.productID productID, T.price price from product P inner join 'transaction' T on P.productID = T.productID where T.date < '" + date + "') PT group by PT.productID) PPT order by PPT.totalPrice DESC LIMIT " + K + ";"
         print(q)
         cursor.execute(q)
@@ -302,17 +301,28 @@ def searchK(request):
     return render(request,"searchK.html",{'Bs':Bs}) 
 
 def searchM(request): 
+    Cs = []
     class Result:
         productName = ""
-        def __init__(self, productName, cnt = -1):
+        def __init__(self, productName, customerName, supplierName, cnt):
             self.productName = productName
+            self.customerName = customerName
+            self.supplierName = supplierName
             self.cnt = cnt
     M = request.POST['M']
     print(M)
+    D = {}
     with connection.cursor() as cursor:
-        q = ""
+        # select P.name, T.customerName cn, P.supplierName sn from product P inner join 'transaction' T on P.productID = T.productID ;
+        q = "select P.name, T.customerName cn, P.supplierName sn from product P inner join 'transaction' T on P.productID = T.productID ;"
         cursor.execute(q)
-        row = cursor.fetchone()
-        #Cs
-    #return render(request,"searchM.html",{'Cs':Cs}) 
+        rows = cursor.fetchall()
+        for C in rows:
+            pname, cname, sname = C[0], C[1], C[2]
+            D[pname + ',' + cname + ',' + sname] += 1
+        for key in D:
+            if D[key] >= M:
+                pname, cname, sname = key.split(",")
+                Cs.append(Result(pname, cname, sname))
+    return render(request,"searchM.html",{'Cs':Cs}) 
 
