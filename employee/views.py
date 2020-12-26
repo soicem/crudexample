@@ -317,7 +317,7 @@ def searchM(request):
         cursor.execute(q)
         rows = cursor.fetchall()
         for C in rows:
-            cname, sname = C[0], C[1], C[2]
+            cname, sname = C[0], C[1]
             key = cname + ',' + sname
             if D.get(key) != None:
                 D[key] += 1
@@ -326,6 +326,6 @@ def searchM(request):
         for key in D:
             if D[key] >= int(M):
                 cname, sname = key.split(",")
-                Cs.append(Result(cname, sname, M))
+                Cs.append(Result(cname, sname, D[key]))
     return render(request,"searchM.html",{'Cs':Cs}) 
 
