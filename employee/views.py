@@ -304,8 +304,7 @@ def searchM(request):
     Cs = []
     class Result:
         productName = ""
-        def __init__(self, productName, customerName, supplierName, cnt):
-            self.productName = productName
+        def __init__(self, customerName, supplierName, cnt):
             self.customerName = customerName
             self.supplierName = supplierName
             self.cnt = cnt
@@ -318,11 +317,15 @@ def searchM(request):
         cursor.execute(q)
         rows = cursor.fetchall()
         for C in rows:
-            pname, cname, sname = C[0], C[1], C[2]
-            D[pname + ',' + cname + ',' + sname] += 1
+            cname, sname = C[0], C[1], C[2]
+            key = cname + ',' + sname
+            if D.get(key) != None:
+                D[key] += 1
+            else:
+                D[key] = 1
         for key in D:
-            if D[key] >= M:
-                pname, cname, sname = key.split(",")
-                Cs.append(Result(pname, cname, sname))
+            if D[key] >= int(M):
+                cname, sname = key.split(",")
+                Cs.append(Result(cname, sname, M))
     return render(request,"searchM.html",{'Cs':Cs}) 
 
