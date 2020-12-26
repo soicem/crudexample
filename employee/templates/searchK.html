@@ -12,16 +12,16 @@
     <thead class="thead-dark">  
     <tr>  
         <th>product name</th>  
+        <th>productID</th>  
         <th>total price(sum)</th>  
-        <th>date</th>  
     </tr>  
     </thead>  
     <tbody>  
 {% for B in Bs %}  
     <tr>  
         <td>{{ B.productName }}</td>  
-        <td>{{ B.totalPrice }}</td>  
-        <td>{{ B.date }}</td>
+        <td>{{ B.productID }}</td>  
+        <td>{{ B.totalPrice }}</td>
     </tr>  
 {% endfor %}  
     </tbody>  

@@ -278,25 +278,28 @@ def specialSearch(request):
     return render(request,"specialSearch.html",{'As':As, 'Cs':Cs}) 
 
 def searchK(request): 
+    Bs = []
     class Result:
         productName = ""
-        def __init__(self, productName, cnt = -1):
+        def __init__(self, productName, productID, totalPrice):
             self.productName = productName
-            self.cnt = cnt
+            self.productID = productID
+            self.totalPrice = totalPrice
     date = request.POST['date']
     K = request.POST['K']
     print(date, K)
     with connection.cursor() as cursor:
         # select * from product P inner join 'transaction' T on P.productID = T.productID where T.date < '2020-12-25 19:11:40.479561';
-        # select PT.productID, sum(PT.price) totalPrice from (select * from product P inner join 'transaction' T on P.productID = T.productID where T.date < '2020-12-25 19:11:40.479561') PT group by PT.productID;
+        # select PPT.productID, PPT.totalPrice from (select PT.productID productID, sum(PT.price) totalPrice from (select P.productID productID, T.price price from product P inner join 'transaction' T on P.productID = T.productID where T.date < '2020-12-25 19:11:40.479561') PT group by PT.productID) PPT order by PPT.totalPrice DESC LIMIT 5;
         # select PT.productID, sum(PT.price) totalPrice from (select * from product P inner join 'transaction' T on P.productID = T.productID where T.date < '2020-12-25 19:11:40.479561') PT group by PT.productID order by sum(PT.price) DESC LIMIT 5
-        q = "select PT.productID, sum(PT.price) totalPrice from (select * from product P inner join 'transaction' T on P.productID = T.productID where T.date < " + date + ") PT order by sum(PT.price) DESC LIMIT " + K + ";"
+        #q = "select PT.productID, sum(PT.price) totalPrice from (select * from product P inner join 'transaction' T on P.productID = T.productID where T.date < '" + date + "') PT order by sum(PT.price) DESC LIMIT " + K + ";"
+        q = "select PPT.name, PPT.productID, PPT.totalPrice from (select PT.name, PT.productID productID, sum(PT.price) totalPrice from (select P.name name, P.productID productID, T.price price from product P inner join 'transaction' T on P.productID = T.productID where T.date < '" + date + "') PT group by PT.productID) PPT order by PPT.totalPrice DESC LIMIT " + K + ";"
         print(q)
         cursor.execute(q)
-        row = cursor.fetchone()
-        print(row)
-        # Bs
-    #return render(request,"searchK.html",{'Bs':Bs}) 
+        row = cursor.fetchall()
+        for B in row:
+            Bs.append(Result(B[0], B[1], B[2]))
+    return render(request,"searchK.html",{'Bs':Bs}) 
 
 def searchM(request): 
     class Result:
