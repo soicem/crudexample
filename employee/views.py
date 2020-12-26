@@ -277,17 +277,29 @@ def specialSearch(request):
     return render(request,"specialSearch.html",{'As':As, 'Cs':Cs}) 
 
 def searchK(request): 
+    class Result:
+        productName = ""
+        def __init__(self, productName, cnt = -1):
+            self.productName = productName
+            self.cnt = cnt
     date = request.POST['date']
     K = request.POST['K']
     print(date, K)
     with connection.cursor() as cursor:
-        q = ""
+        q = "select productID, totalPrice from (select productID, sum(price) totalPrice from (select * from product P inner join 'transaction' T on P.productID = T.productID where T.date < " + date + ") PT group by PT.productID) R order by R.totalPrice DESC LIMIT " + K + ";"
+        print(q)
         cursor.execute(q)
         row = cursor.fetchone()
+        print(row)
         # Bs
     #return render(request,"searchK.html",{'Bs':Bs}) 
 
 def searchM(request): 
+    class Result:
+        productName = ""
+        def __init__(self, productName, cnt = -1):
+            self.productName = productName
+            self.cnt = cnt
     M = request.POST['M']
     print(M)
     with connection.cursor() as cursor:
@@ -295,5 +307,5 @@ def searchM(request):
         cursor.execute(q)
         row = cursor.fetchone()
         #Cs
-    #return render(request,"searchM.html",{'Bs':Bs}) 
+    #return render(request,"searchM.html",{'Cs':Cs}) 
 
